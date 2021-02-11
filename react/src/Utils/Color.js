@@ -5,4 +5,4 @@ const Color = {
   basicBlack: '#1F2124',
 };
 
-export { Color };
+export default Color;
