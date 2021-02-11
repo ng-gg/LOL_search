@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import color from '@Utils/Color';
 import Logo from '@Components/Logo';
+import Summoner from '@Components/Info/Summoner';
 
 const Container = styled.div`
   width: 20%;
@@ -23,6 +24,7 @@ function Component() {
   return (
     <Container>
       <Logo />
+      <Summoner />
     </Container>
   );
 }
