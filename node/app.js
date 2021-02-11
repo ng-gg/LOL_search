@@ -10,6 +10,7 @@ app.use(function (req, res, next) {
   if (isDisableKeepAlive) {
     res.set('Connection', 'close');
   }
+  next();
 });
 app.get('/', function (req, res) {
   res.send('Hello World!');
