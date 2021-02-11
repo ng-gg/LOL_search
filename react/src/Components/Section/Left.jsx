@@ -11,6 +11,9 @@ const Container = styled.div`
   border-bottom-left-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   box-sizing: border-box;
+  display: flex;
+  flex-flow: column;
+  padding: 1rem;
 `;
 
 function Component() {

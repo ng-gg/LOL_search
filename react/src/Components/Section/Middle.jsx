@@ -9,6 +9,9 @@ const Container = styled.div`
   -webkit-backdrop-filter: blur(4px);
   border: 1px solid rgba(255, 255, 255, 0.18);
   box-sizing: border-box;
+  display: flex;
+  flex-flow: column;
+  padding: 1rem;
 `;
 
 function Component() {

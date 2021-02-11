@@ -9,6 +9,7 @@ module.exports = {
       ['@Components']: path.resolve(__dirname, 'src/Components/'),
       ['@Modal']: path.resolve(__dirname, 'src/Components/Modal'),
       ['@Section']: path.resolve(__dirname, 'src/Components/Section/'),
+      ['@Logo']: path.resolve(__dirname, 'src/Components/Logo/'),
     })
   ),
 };
