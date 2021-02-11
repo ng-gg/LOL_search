@@ -1,11 +1,11 @@
 const express = require('express');
 const dotenv = require('dotenv');
-const axios = require('axios');
-const https = require('https');
-const urlencode = require('urlencode');
+// const axios = require('axios');
+// const https = require('https');
+// const urlencode = require('urlencode');
 const app = express();
 
-const riotAPI = require('./riotAPI');
+const summoner = require('./routes/summoner');
 
 dotenv.config();
 const port = process.env.PORT;
@@ -17,28 +17,11 @@ app.use(function (req, res, next) {
   next();
 });
 
+app.use('/api/summoner', summoner);
+
 app.get('/', async function (req, res) {
-  const summonerInfo = await riotAPI.getSummonerInfoByName('그어억');
-  res.send(summonerInfo);
-});
-
-app.get('/:summonerName', async function (req, res) {
-  const summonerName = req.params.summonerName;
-  const summonerInfo = await riotAPI.getSummonerInfoByName(summonerName);
-  res.send(summonerInfo);
-});
-
-app.get('/match/:summonerName', async function (req, res) {
-  const summonerName = req.params.summonerName;
-  const { accountId } = await riotAPI.getSummonerInfoByName(summonerName);
-  const beginIndex = 0;
-  const endIndex = 20;
-  const matchHistory = await riotAPI.getSummonerMantchHistory(
-    accountId,
-    beginIndex,
-    endIndex
-  );
-  res.send(matchHistory);
+  res.write('<h1>NG.GG RIOT API</h1>');
+  res.send();
 });
 
 app.listen(port, function () {
