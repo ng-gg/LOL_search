@@ -10,6 +10,7 @@ module.exports = {
       ['@Modal']: path.resolve(__dirname, 'src/Components/Modal'),
       ['@Section']: path.resolve(__dirname, 'src/Components/Section/'),
       ['@Logo']: path.resolve(__dirname, 'src/Components/Logo/'),
+      ['@Info']: path.resolve(__dirname, 'src/Components/Info/'),
     })
   ),
 };
