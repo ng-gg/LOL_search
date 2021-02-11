@@ -1,7 +1,8 @@
 import React from 'react';
+import MainPage from '@Page/Main';
 
 function App() {
-  return <div>NG.GG!</div>;
+  return <MainPage />;
 }
 
 export default App;

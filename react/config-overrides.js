@@ -7,6 +7,7 @@ module.exports = {
     addWebpackAlias({
       ['@Utils']: path.resolve(__dirname, 'src/Utils/'),
       ['@Components']: path.resolve(__dirname, 'src/Components/'),
+      ['@Image']: path.resolve(__dirname, 'src/Components/Image'),
       ['@Page']: path.resolve(__dirname, 'src/Components/Page/'),
       ['@Header']: path.resolve(__dirname, 'src/Components/Header/'),
     })
