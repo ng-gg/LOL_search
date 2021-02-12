@@ -3,6 +3,11 @@ const Color = {
   modalBackgroundGray: 'rgba(255, 255, 255, 0.05)',
   modalBorder: 'rgba(255, 255, 255, 0.18)',
   summonerBackground: 'rgb(242, 242, 242)',
+  soloBackground: 'linear-gradient(#C7ADD9, #F24B88)',
+  soloTierBackground: 'rgba(255, 255, 255, 0.25)',
+  soloTierText: 'white',
+  soloTierBorder: 'rgba(255, 255, 255, 0.18)',
+  soloTierShadow: 'rgba(31, 38, 135, 0.1)',
 };
 
 export default Color;
