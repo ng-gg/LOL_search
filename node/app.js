@@ -1,7 +1,7 @@
 const express = require('express');
 const dotenv = require('dotenv');
 // const axios = require('axios');
-// const https = require('https');
+const https = require('https');
 // const urlencode = require('urlencode');
 const app = express();
 
@@ -39,6 +39,12 @@ app.get('/test', async function (req, res) {
   //   "summonerLevel": 257
   //   }
 });
+
+// app.get('/champion', function (req, res) {
+//   const champObj;
+
+//   res.send(champObj);
+// });
 
 app.listen(port, function () {
   process.send('ready');
