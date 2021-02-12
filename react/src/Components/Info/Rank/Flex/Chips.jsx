@@ -17,6 +17,7 @@ const Container = styled.div`
   justify-content: center;
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
+  box-shadow: 0 8px 20px 0 rgba(31, 38, 135, 0.37);
 `;
 
 function Component() {

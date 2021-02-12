@@ -15,6 +15,7 @@ const Container = styled.div`
   flex-flow: column;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 6px 20px 0 rgba(147, 78, 166, 0.37);
 `;
 
 function Component() {
