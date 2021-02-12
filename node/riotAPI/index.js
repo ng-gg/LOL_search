@@ -10,6 +10,7 @@ module.exports = {
       https.get(urls.summoner_v4(encodedName), function (response) {
         response.on('data', function (data) {
           const summonerData = JSON.parse(data);
+
           resolve(summonerData);
         });
       });
@@ -27,6 +28,16 @@ module.exports = {
           });
         }
       );
+    });
+  },
+  getSummoerLeagueInfo: function (summonerId) {
+    return new Promise(function (resolve, reject) {
+      https.get(urls.league_v4(summonerId), function (response) {
+        response.on('data', function (data) {
+          const leagueInfo = JSON.parse(data);
+          resolve(leagueInfo);
+        });
+      });
     });
   },
 };

@@ -11,4 +11,18 @@ module.exports = {
       `?endIndex=${endIndex}&beginIndex=${beginIndex}&api_key=${process.env.RIOT_API_KEY}`
     );
   },
+
+  league_v4: function (encryptedSummonerId) {
+    return (
+      `https://kr.api.riotgames.com/lol/league/v4/entries/by-summoner/` +
+      `${encryptedSummonerId}?api_key=${process.env.RIOT_API_KEY}`
+    );
+  },
+
+  profileIconUrl: function (profileIconId) {
+    return (
+      `http://ddragon.leagueoflegends.com/cdn/11.3.1/img/profileicon/` +
+      `${profileIconId}.png`
+    );
+  },
 };
