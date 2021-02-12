@@ -10,7 +10,7 @@ const Container = styled.div`
 `;
 
 function Component() {
-  return <Container>래더랭킹 20,413위 </Container>;
+  return <Container>랭킹 20,413위 </Container>;
 }
 
 export default Component;

@@ -18,7 +18,7 @@ const Container = styled.div`
 `;
 
 const ColumnContainer = styled.div`
-  width: 130px;
+  width: 120px;
   height: 100%;
   display: flex;
   flex-flow: column;

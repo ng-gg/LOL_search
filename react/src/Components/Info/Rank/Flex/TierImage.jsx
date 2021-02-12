@@ -4,8 +4,8 @@ import styled from 'styled-components';
 // import color from '@Utils/Color';
 
 const Container = styled.img`
-  width: 130px;
-  height: 130px;
+  width: 120px;
+  height: 120px;
   align: center;
 `;
 
