@@ -22,9 +22,21 @@ router.get('/matchhistory/:summonerName', async function (req, res) {
       beginIndex,
       endIndex
     );
-    res.send(matchHistory);
+
+    const responseObject = {
+      message: 'API success',
+      data: matchHistory,
+    };
+
+    res.send(responseObject);
   } else {
-    res.send(summonerInfo);
+    const responseObject = {
+      message: 'API fail - unregistered summoner name.',
+      data: {
+        requestedName: summonerName,
+      },
+    };
+    res.send(responseObject);
   }
 });
 
@@ -79,9 +91,21 @@ router.get('/profile/:summonerName', async function (req, res) {
       teamRank: teamRankObject,
     };
 
-    res.send(leagueInfo);
+    const responseObject = {
+      message: 'API success',
+      data: leagueInfo,
+    };
+
+    res.send(responseObject);
   } else {
-    res.send(summonerInfo);
+    const responseObject = {
+      message: 'API fail - unregistered summoner name.',
+      data: {
+        requestedName: summonerName,
+      },
+    };
+
+    res.status(404).send(responseObject);
   }
 });
 
