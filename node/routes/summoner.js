@@ -32,35 +32,51 @@ router.get('/profile/:summonerName', async function (req, res) {
   const summonerName = req.params.summonerName;
   const summonerInfo = await riotAPI.getSummonerInfoByName(summonerName);
 
-  if (summonerInfo.status === undefined) {
+  if (!summonerInfo.status) {
     const { id, profileIconId } = summonerInfo;
-
-    const summonerLeagueObject = await riotAPI.getSummoerLeagueInfo(id);
     const profileIconUrl = urls.profileIconUrl(profileIconId);
 
-    const [teamLankAllObject, soloLankAllObject] = summonerLeagueObject;
+    const summonerLeagueObject = await riotAPI.getSummoerLeagueInfo(id);
 
-    const teamLankObject = {
-      tier: teamLankAllObject.tier,
-      rank: teamLankAllObject.rank,
-      leaguePoints: teamLankAllObject.leaguePoints,
-      wins: teamLankAllObject.wins,
-      losses: teamLankAllObject.losses,
+    const teamRankObject = {
+      tier: 'unranked',
+      rank: null,
+      leaguePoints: null,
+      wins: null,
+      losses: null,
     };
 
-    const soloLankObject = {
-      tier: soloLankAllObject.tier,
-      rank: soloLankAllObject.rank,
-      leaguePoints: soloLankAllObject.leaguePoints,
-      wins: soloLankAllObject.wins,
-      losses: soloLankAllObject.losses,
+    const soloRankObject = {
+      tier: 'unranked',
+      rank: null,
+      leaguePoints: null,
+      wins: null,
+      losses: null,
     };
+
+    if (summonerLeagueObject.length > 0) {
+      summonerLeagueObject.forEach((leagueObject) => {
+        if (leagueObject.queueType === 'RANKED_FLEX_SR') {
+          teamRankObject.tier = leagueObject.tier;
+          teamRankObject.rank = leagueObject.rank;
+          teamRankObject.leaguePoints = leagueObject.leaguePoints;
+          teamRankObject.wins = leagueObject.wins;
+          teamRankObject.losses = leagueObject.losses;
+        } else if (leagueObject.queueType === 'RANKED_SOLO_5x5') {
+          soloRankObject.tier = leagueObject.tier;
+          soloRankObject.rank = leagueObject.rank;
+          soloRankObject.leaguePoints = leagueObject.leaguePoints;
+          soloRankObject.wins = leagueObject.wins;
+          soloRankObject.losses = leagueObject.losses;
+        }
+      });
+    }
 
     const leagueInfo = {
       summmonerName: summonerName,
       profileIconUrl: profileIconUrl,
-      soloLank: soloLankObject,
-      teamLank: teamLankObject,
+      soloLank: soloRankObject,
+      teamRank: teamRankObject,
     };
 
     res.send(leagueInfo);
