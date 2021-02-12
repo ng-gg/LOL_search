@@ -7,7 +7,7 @@ const Container = styled.button`
   background: rgba(255, 255, 255, 0);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
-  border-radius: 10px;
+  border-radius: 5px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   box-sizing: border-box;
   font-size: 1rem;

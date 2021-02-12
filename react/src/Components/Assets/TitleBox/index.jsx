@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
-  width: 50%;
   height: 50px;
   display: flex;
   align-items: center;

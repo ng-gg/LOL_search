@@ -5,6 +5,7 @@ import color from '@Utils/Color';
 import TitleBox from '@Assets/TitleBox';
 import SearchBox from '@Assets/SearchBox';
 import QueueTypeBox from '@Assets/QueueTypeBox';
+import MatchBox from '@Info/MatchBox';
 
 const Container = styled.div`
   width: 50%;
@@ -18,16 +19,19 @@ const Container = styled.div`
   box-sizing: border-box;
   display: flex;
   flex-flow: column;
-  padding: 1.5rem;
+  // padding: 1.5rem;
 `;
 
 const RowContainer = styled.div`
   width: 100%;
-  height: 50px;
+  height: 90px;
   display: flex;
   flex-flow: row;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+  padding: 1.5rem;
+
+  box-sizing: border-box;
 `;
 
 function Component() {
@@ -38,6 +42,7 @@ function Component() {
         <SearchBox />
       </RowContainer>
       <QueueTypeBox />
+      <MatchBox />
     </Container>
   );
 }

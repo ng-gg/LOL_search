@@ -6,10 +6,10 @@ import Button from './Button';
 const Container = styled.div`
   width: 100%;
   height: 40px;
-  margin-top: 2rem;
   display: flex;
   align-items: center;
-  // justify-content: space-between;
+  padding-left: 1.5rem;
+  box-sizing: border-box;
 `;
 
 function Component() {

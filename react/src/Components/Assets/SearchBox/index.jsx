@@ -5,7 +5,7 @@ import Button from './Button';
 
 const RowContainer = styled.div`
   width: 250px;
-  height: 90%;
+  height: 100%;
   display: flex;
   flex-flow: row;
   align-items: center;
