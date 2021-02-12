@@ -14,6 +14,7 @@ const Container = styled.button`
 
   :hover {
     pointer: cursor;
+    background: rgba(255, 255, 255, 0.6);
   }
 
   :focus {
