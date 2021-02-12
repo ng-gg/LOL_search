@@ -15,7 +15,7 @@ const Container = styled.div`
   box-sizing: border-box;
   display: flex;
   flex-flow: column;
-  padding: 1rem;
+  padding: 1.5rem;
 `;
 
 function Component() {

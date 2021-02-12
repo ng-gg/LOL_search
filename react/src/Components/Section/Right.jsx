@@ -13,7 +13,7 @@ const Container = styled.div`
   height: 100%;
   display: flex;
   flex-flow: column;
-  padding: 1rem;
+  padding: 1.5rem;
   box-sizing: border-box;
 `;
 function Component() {
