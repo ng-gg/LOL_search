@@ -1,14 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import GameStats from './GameStats';
+
 const Container = styled.div`
   width: 100%;
-  height: 100px;
+  height: 110px;
   display: flex;
   flex-flow: row;
-  justify-content: center;
   align-items: center;
   margin-bottom: 1rem;
+  padding: 1rem;
 
   background: rgba(255, 255, 255, 1);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
@@ -20,7 +22,11 @@ const Container = styled.div`
 `;
 
 function Component() {
-  return <Container>asd</Container>;
+  return (
+    <Container>
+      <GameStats></GameStats>
+    </Container>
+  );
 }
 
 export default Component;
