@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import color from '@Utils/Color';
 import TitleBox from '@Assets/TitleBox';
 import SearchBox from '@Assets/SearchBox';
+import QueueTypeBox from '@Assets/QueueTypeBox';
 
 const Container = styled.div`
   width: 50%;
@@ -36,6 +37,7 @@ function Component() {
         <TitleBox>Matches</TitleBox>
         <SearchBox />
       </RowContainer>
+      <QueueTypeBox />
     </Container>
   );
 }
