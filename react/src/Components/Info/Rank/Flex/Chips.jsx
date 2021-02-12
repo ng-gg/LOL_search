@@ -9,13 +9,12 @@ import TierScore from './TierScore';
 const Container = styled.div`
   width: 100%;
   height: 100%;
-  // background: ${color.flexBackground};
+  background: ${color.flexBackground};
   border-radius: 20px;
   display: flex;
   flex-flow: column;
   align-items: center;
   justify-content: center;
-  background: rgb(242, 242, 242);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
 `;
