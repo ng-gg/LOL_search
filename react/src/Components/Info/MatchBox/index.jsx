@@ -6,9 +6,8 @@ import Match from './Match';
 const Container = styled.div`
   width: 100%;
   height: 800px;
-  display: flex;
-  flex-flow: row;
-  flex-wrap: wrap;
+  display: block;
+
   overflow: auto;
   padding: 1.5rem;
   margin-top: 1rem;
@@ -24,10 +23,6 @@ const Container = styled.div`
 function Component() {
   return (
     <Container>
-      <Match></Match>
-      <Match></Match>
-      <Match></Match>
-      <Match></Match>
       <Match></Match>
       <Match></Match>
       <Match></Match>
