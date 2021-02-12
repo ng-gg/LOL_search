@@ -5,6 +5,7 @@ import color from '@Utils/Color';
 import Logo from '@Components/Logo';
 import Summoner from '@Info/Summoner';
 import Solo from '@Info/Rank/Solo';
+import Flex from '@Info/Rank/Flex';
 
 const Container = styled.div`
   width: 20%;
@@ -27,6 +28,7 @@ function Component() {
       <Logo />
       <Summoner />
       <Solo />
+      <Flex />
     </Container>
   );
 }
