@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 import color from '@Utils/Color';
+import TitleBox from '@Assets/TitleBox';
+import SearchBox from '@Assets/SearchBox';
 
 const Container = styled.div`
   width: 50%;
@@ -18,8 +20,24 @@ const Container = styled.div`
   padding: 1.5rem;
 `;
 
+const RowContainer = styled.div`
+  width: 100%;
+  height: 50px;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
+  align-items: center;
+`;
+
 function Component() {
-  return <Container>1234</Container>;
+  return (
+    <Container>
+      <RowContainer>
+        <TitleBox>Matches</TitleBox>
+        <SearchBox />
+      </RowContainer>
+    </Container>
+  );
 }
 
 export default Component;
