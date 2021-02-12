@@ -3,7 +3,8 @@ const Color = {
   modalBackgroundGray: 'rgba(255, 255, 255, 0.05)',
   modalBorder: 'rgba(255, 255, 255, 0.18)',
 
-  summonerBackground: 'rgb(242, 242, 242)',
+  summonerBackground: 'rgba(255, 255, 255, 0.25)',
+  summonerShadow: 'rgba(31, 38, 135, 0.15)',
 
   soloBackground: 'linear-gradient(#C7ADD9, #F24B88)',
   soloTierBackground: 'rgba(255, 255, 255, 0.25)',

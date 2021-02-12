@@ -9,12 +9,15 @@ import Status from './Status';
 const Container = styled.div`
   width: 100%;
   height: 100%;
-  background-color: ${color.summonerBackground};
   border-radius: 20px;
   display: flex;
   flex-flow: row;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 8px 20px 0 ${color.summonerShadow};
+  background: ${color.summonerBackground};
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 `;
 
 const ColumnContainer = styled.div`
