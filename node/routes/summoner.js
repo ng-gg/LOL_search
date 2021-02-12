@@ -13,7 +13,7 @@ router.get('/matchhistory/:summonerName', async function (req, res) {
   const summonerName = req.params.summonerName;
   const summonerInfo = await riotAPI.getSummonerInfoByName(summonerName);
 
-  if (summonerInfo.status === undefined) {
+  if (!summonerInfo.status) {
     const { accountId } = summonerInfo;
     const beginIndex = 0;
     const endIndex = 20;
