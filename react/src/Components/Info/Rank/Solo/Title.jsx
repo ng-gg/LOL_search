@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-// import color from '@Utils/Color';
+import color from '@Utils/Color';
 
 const Container = styled.div`
   font-weight: 500;
   font-size: 1.2rem;
-  color: #fefefe;
+  color: ${color.soloTierText};
 `;
 
 function Component() {
