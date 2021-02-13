@@ -10,7 +10,7 @@ const Container = styled.div`
   flex-flow: column;
   justify-content: center;
   align-items: center;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
 `;
 
 function Component() {

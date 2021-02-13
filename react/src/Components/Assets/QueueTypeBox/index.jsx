@@ -8,8 +8,8 @@ const Container = styled.div`
   height: 40px;
   display: flex;
   align-items: center;
-  padding-left: 1.5rem;
   box-sizing: border-box;
+  padding-left: 1.5rem;
 `;
 
 function Component() {

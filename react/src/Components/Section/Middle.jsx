@@ -22,7 +22,6 @@ const RowContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem;
-
   box-sizing: border-box;
 `;
 

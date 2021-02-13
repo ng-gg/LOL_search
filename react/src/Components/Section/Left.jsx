@@ -12,7 +12,8 @@ const Container = styled.div`
   height: 100%;
   display: flex;
   flex-flow: column;
-  padding: 1.5rem;
+  padding-top: 1.5rem;
+  padding-left: 3rem;
   box-sizing: border-box;
 `;
 

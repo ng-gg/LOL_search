@@ -5,19 +5,10 @@ import Match from './Match';
 
 const Container = styled.div`
   width: 100%;
-  height: 800px;
-  display: block;
-
-  overflow: auto;
+  display: flex;
+  flex-flow: column;
   padding: 1.5rem;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
   box-sizing: border-box;
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-  ::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera*/
-  }
 `;
 
 function Component() {

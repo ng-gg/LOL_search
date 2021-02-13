@@ -4,22 +4,19 @@ import styled from 'styled-components';
 const Container = styled.button`
   width: 25%;
   height: 100%;
-  background: rgba(255, 255, 255, 0);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  background: white;
   border-radius: 5px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
   box-sizing: border-box;
   font-size: 1rem;
   font-weight: bold;
   color: rgba(0, 0, 0, 0.5);
-
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+  border: none;
   :focus {
     outline: none;
   }
   :hover {
     cursor: pointer;
-    border-radius: 10px;
   }
 `;
 

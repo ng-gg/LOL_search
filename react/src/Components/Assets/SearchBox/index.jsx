@@ -10,12 +10,10 @@ const RowContainer = styled.div`
   flex-flow: row;
   align-items: center;
   justify-content: space-between;
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  background: white;
   border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
   padding: 0.3rem;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
   box-sizing: border-box;
 `;
 
