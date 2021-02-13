@@ -10,16 +10,10 @@ import Flex from '@Info/Rank/Flex';
 const Container = styled.div`
   width: 20%;
   height: 100%;
-  background: ${color.modalBackgroundWhite};
-  border: 1px solid ${color.modalBorder};
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
-  box-sizing: border-box;
   display: flex;
   flex-flow: column;
   padding: 1.5rem;
+  box-sizing: border-box;
 `;
 
 function Component() {
