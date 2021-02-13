@@ -12,6 +12,10 @@ module.exports = {
     );
   },
 
+  match_v4_matchDetails: function (matchId) {
+    return `https://kr.api.riotgames.com/lol/match/v4/matches/${matchId}?api_key=${process.env.RIOT_API_KEY}`;
+  },
+
   league_v4: function (encryptedSummonerId) {
     return (
       `https://kr.api.riotgames.com/lol/league/v4/entries/by-summoner/` +

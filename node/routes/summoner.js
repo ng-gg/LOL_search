@@ -40,6 +40,41 @@ router.get('/matchhistory/:summonerName', async function (req, res) {
   }
 });
 
+router.get(
+  '/matchhistory/matchdetails/:summonerName',
+  async function (req, res) {
+    const summonerName = req.params.summonerName;
+    const summonerInfo = await riotAPI.getSummonerInfoByName(summonerName);
+
+    if (!summonerInfo.status) {
+      const { accountId } = summonerInfo;
+      const beginIndex = 0;
+      const endIndex = 20;
+      const matchHistory = await riotAPI.getSummonerMantchHistory(
+        accountId,
+        beginIndex,
+        endIndex
+      );
+
+      const matchIdArray = [];
+      const matches = matchHistory.matches;
+      matches.forEach((match) => {
+        matchIdArray.push(match.gameId);
+      });
+
+      res.send(matchIdArray);
+    } else {
+      const responseObject = {
+        message: 'API fail - unregistered summoner name.',
+        data: {
+          requestedName: summonerName,
+        },
+      };
+      res.send(responseObject);
+    }
+  }
+);
+
 router.get('/profile/:summonerName', async function (req, res) {
   const summonerName = req.params.summonerName;
   const summonerInfo = await riotAPI.getSummonerInfoByName(summonerName);
