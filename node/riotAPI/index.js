@@ -40,4 +40,15 @@ module.exports = {
       });
     });
   },
+
+  getOneMatchDetail(matchId) {
+    return new Promise(function (resolve, reject) {
+      https.get(urls.match_v4_matchDetails(matchId), function (response) {
+        response.on('data', function (data) {
+          const matchDetail = JSON.parse(data);
+          resolve(matchDetail);
+        });
+      });
+    });
+  },
 };
