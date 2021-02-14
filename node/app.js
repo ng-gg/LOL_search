@@ -3,10 +3,13 @@ const dotenv = require('dotenv');
 // const axios = require('axios');
 const https = require('https');
 // const urlencode = require('urlencode');
+const cors = require('cors');
 const app = express();
 
 const summoner = require('./routes/summoner');
 const riotAPI = require('./riotAPI');
+
+app.use(cors());
 
 dotenv.config();
 const port = process.env.PORT;
