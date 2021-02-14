@@ -3,6 +3,54 @@ var router = require('express').Router();
 const riotAPI = require('../riotAPI');
 const urls = require('../riotAPI/utils/url');
 
+//functions
+function getChampionNameById(championId, championList) {
+  championList = championList.data;
+  for (key in championList) {
+    if (championList[key].key === String(championId)) {
+      return championList[key].id; //champion Name;
+    }
+  }
+}
+
+async function getPlayerInfoByIndex(index, matchDetail, championList) {
+  const playerChampionId = matchDetail.participants[index].championId;
+  let plyerChampionImageUrl = '';
+  const playerChampionName = await getChampionNameById(
+    playerChampionId,
+    championList
+  );
+
+  plyerChampionImageUrl = await urls.championImageUrlByName(playerChampionName);
+
+  return {
+    summonerName: matchDetail.participantIdentities[index].player.summonerName,
+    teamId: matchDetail.participants[index].teamId,
+    champion: {
+      champName: playerChampionName,
+      imageUrl: plyerChampionImageUrl,
+    },
+  };
+}
+
+function getSpellImageUrlById(spellId, spellList) {
+  spellList = spellList.data;
+
+  for (key in spellList) {
+    if (spellList[key].key === String(spellId)) {
+      return urls.spellImageUrlByName(key);
+    }
+  }
+  return 'Spell Not found - ' + spellId;
+}
+
+// function sleep(miliseconds) {
+//   var currentTime = new Date().getTime();
+
+//   while (currentTime + miliseconds >= new Date().getTime()) {}
+// }
+
+//router
 router.get('/:summonerName', async function (req, res) {
   const summonerName = req.params.summonerName;
   const summonerInfo = await riotAPI.getSummonerInfoByName(summonerName);
@@ -40,68 +88,38 @@ router.get('/matchhistory/:summonerName', async function (req, res) {
   }
 });
 
-///
-function sleep(miliseconds) {
-  var currentTime = new Date().getTime();
-
-  while (currentTime + miliseconds >= new Date().getTime()) {}
-}
-
-function getChampionNameById(championId, championList) {
-  championList = championList.data;
-  for (key in championList) {
-    if (championList[key].key === String(championId)) {
-      return championList[key].id; //champion Name;
-    }
-  }
-}
-
-async function getPlayerInfoByIndex(index, matchDetail, championList) {
-  const playerChampionId = matchDetail.participants[index].championId;
-  let plyerChampionImageUrl = '';
-  const playerChampionName = await getChampionNameById(
-    playerChampionId,
-    championList
-  );
-
-  plyerChampionImageUrl = await urls.championImageUrlByName(playerChampionName);
-
-  return {
-    summonerName: matchDetail.participantIdentities[index].player.summonerName,
-    teamId: matchDetail.participants[index].teamId,
-    champion: {
-      champName: playerChampionName,
-      imageUrl: plyerChampionImageUrl,
-    },
-  };
-}
-
-function getSpellImageUrlById(spellId, spellList) {
-  spellList = spellList.data;
-
-  console.log(spellList);
-
-  for (key in spellList) {
-    if (spellList[key].key === String(spellId)) {
-      return urls.spellImageUrlByName(key);
-    }
-  }
-  return 'Spell Not found - ' + spellId;
-}
-
 router.get(
   '/matchhistory/matchdetails/:summonerName',
   async function (req, res) {
     const summonerName = req.params.summonerName;
     const summonerInfo = await riotAPI.getSummonerInfoByName(summonerName);
 
+    let beginIndex = req.query.beginIndex;
+    let endIndex = req.query.endIndex;
+
     const championList = await riotAPI.getChampionList();
     let spellList = await riotAPI.getSpellList();
 
     if (!summonerInfo.status) {
       const { accountId } = summonerInfo;
-      let beginIndex = 0;
-      let endIndex = 1;
+
+      if (!beginIndex) {
+        beginIndex = 0;
+      }
+      if (!endIndex) {
+        endIndex = 1;
+      }
+
+      if (beginIndex > endIndex) {
+        const errorObject = {
+          message: 'API fail - beginIndex should be less than endIndex',
+          data: {
+            beginIndex: beginIndex,
+            endIndex: endIndex,
+          },
+        };
+        res.send(errorObject);
+      }
 
       const matchHistory = await riotAPI.getSummonerMantchHistory(
         accountId,
@@ -127,9 +145,6 @@ router.get(
         let participantSpell2Id = '';
         let participantStats = '';
 
-        // res.send(matchDetail);
-        // sleep(5000000);
-
         matchDetail.participantIdentities.forEach((el) => {
           if (el.player.summonerName === summonerName) {
             participantId = el.participantId;
@@ -138,7 +153,6 @@ router.get(
 
         const thisSummoner = matchDetail.participants[participantId - 1];
 
-        participantTeam = thisSummoner.teamId;
         participantChampionId = thisSummoner.championId;
         participantSpell1Id = thisSummoner.spell1Id;
         participantSpell2Id = thisSummoner.spell2Id;
@@ -153,6 +167,14 @@ router.get(
         );
 
         //destructuring
+
+        // queueId : 게임 종류 코드
+        // 900 - 우루프
+        // 430 - 일반
+        // 450 - 무작위총력전
+        // 420 - 솔랭
+        // 440 - 자유 5:5 랭크
+
         const matchObject = {
           queueId: matchDetail.queueId, //게임 종류
           gameDuration: matchDetail.gameDuration, //게임 총 시간
@@ -206,10 +228,15 @@ router.get(
             },
           },
         };
-        //push
+
         matchDetailArr.push(matchObject);
       }
-      res.send(matchDetailArr);
+
+      const responseObject = {
+        message: 'API success',
+        data: matchDetailArr,
+      };
+      res.send(responseObject);
     } else {
       const responseObject = {
         message: 'API fail - unregistered summoner name.',
