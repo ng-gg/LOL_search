@@ -105,7 +105,7 @@ router.get('/profile/:summonerName', async function (req, res) {
       },
     };
 
-    res.status(404).send(responseObject);
+    res.send(responseObject);
   }
 });
 
