@@ -45,6 +45,7 @@
     "eslint-plugin-react": "^7.22.0",
     "prettier": "2.2.1",
     "react-app-rewired": "^2.1.8",
+    "recoil": "^0.1.2",
     "styled-components": "^5.2.1"
   }
 }
