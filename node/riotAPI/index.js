@@ -1,5 +1,6 @@
 const https = require('https');
 const urlencode = require('urlencode');
+const { get } = require('../routes/summoner');
 const urls = require('./utils/url');
 
 module.exports = {
@@ -43,10 +44,49 @@ module.exports = {
 
   getOneMatchDetail(matchId) {
     return new Promise(function (resolve, reject) {
+      let mergeData = '';
       https.get(urls.match_v4_matchDetails(matchId), function (response) {
         response.on('data', function (data) {
-          const matchDetail = JSON.parse(data);
-          resolve(matchDetail);
+          mergeData += data;
+        });
+
+        response.on('end', function () {
+          const returnData = JSON.parse(mergeData);
+          resolve(returnData);
+        });
+      });
+    });
+  },
+
+  getChampionList() {
+    return new Promise(function (resolve, reject) {
+      let mergeData = '';
+
+      https.get(urls.championListUrl(), function (response) {
+        response.on('data', function (data) {
+          mergeData += data;
+        });
+
+        response.on('end', function () {
+          const returnData = JSON.parse(mergeData);
+          resolve(returnData);
+        });
+      });
+    });
+  },
+
+  getSpellList() {
+    return new Promise(function (resolve, reject) {
+      let mergeData = '';
+
+      https.get(urls.spellListUrl(), function (response) {
+        response.on('data', function (data) {
+          mergeData += data;
+        });
+
+        response.on('end', function () {
+          const returnData = JSON.parse(mergeData);
+          resolve(returnData);
         });
       });
     });

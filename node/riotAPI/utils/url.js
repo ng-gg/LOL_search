@@ -25,8 +25,28 @@ module.exports = {
 
   profileIconUrl: function (profileIconId) {
     return (
-      `http://ddragon.leagueoflegends.com/cdn/11.3.1/img/profileicon/` +
+      `https://ddragon.leagueoflegends.com/cdn/11.3.1/img/profileicon/` +
       `${profileIconId}.png`
     );
+  },
+
+  championListUrl: function () {
+    return `https://ddragon.leagueoflegends.com/cdn/11.3.1/data/en_US/champion.json`;
+  },
+
+  championImageUrlByName: function (champName) {
+    return `https://ddragon.leagueoflegends.com/cdn/11.3.1/img/champion/${champName}.png`;
+  },
+
+  spellListUrl: function () {
+    return `https://ddragon.leagueoflegends.com/cdn/11.3.1/data/en_US/summoner.json`;
+  },
+
+  spellImageUrlByName: function (spellName) {
+    return `https://ddragon.leagueoflegends.com/cdn/11.3.1/img/spell/${spellName}.png`;
+  },
+
+  itemImageUrlById: function (itemId) {
+    return `https://ddragon.leagueoflegends.com/cdn/11.3.1/img/item/${itemId}.png`;
   },
 };
