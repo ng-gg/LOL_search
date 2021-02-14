@@ -14,9 +14,15 @@ const Container = styled.div`
 `;
 
 function Component() {
-  const summonerName = useRecoilValue(state.summonerName);
+  const summonerData = useRecoilValue(state.summonerData);
 
-  return <Container>{summonerName}</Container>;
+  return (
+    <Container>
+      {!summonerData.data.summmonerName
+        ? 'unknown'
+        : summonerData.data.summmonerName}
+    </Container>
+  );
 }
 
 export default Component;

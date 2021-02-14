@@ -4,6 +4,7 @@ import { useRecoilState } from 'recoil';
 
 import Button from './Button';
 import State from '@State';
+import Api from '@Utils/Api';
 
 const RowContainer = styled.div`
   width: 250px;
@@ -35,15 +36,15 @@ const Container = styled.input`
 
 function Component() {
   const [searchName, setSearchName] = useRecoilState(State.searchName);
-  const [, setSummonerName] = useRecoilState(State.summonerName);
+  const [, setSummonerData] = useRecoilState(State.summonerData);
 
   function onChange(event) {
     setSearchName(event.target.value);
   }
 
-  function onKeypress(event) {
+  async function onKeypress(event) {
     if (event.key === 'Enter') {
-      setSummonerName(searchName);
+      setSummonerData(await Api.getProfile(searchName));
     }
   }
 
@@ -52,7 +53,9 @@ function Component() {
       <Container
         placeholder="Search"
         onChange={onChange}
-        onKeyPress={onKeypress}
+        onKeyPress={async (event) => {
+          await onKeypress(event);
+        }}
       ></Container>
       <Button></Button>
     </RowContainer>

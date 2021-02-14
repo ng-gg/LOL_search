@@ -34,7 +34,7 @@ function Component() {
       <ProfileImage />
       <ColumnContainer>
         <Name />
-        <Status />
+        {/* <Status /> */}
       </ColumnContainer>
     </Container>
   );

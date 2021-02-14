@@ -1,5 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useRecoilValue } from 'recoil';
+
+import State from '@State';
 
 const Container = styled.img`
   width: 50px;
@@ -9,8 +12,15 @@ const Container = styled.img`
 `;
 
 function Component() {
+  const summonerData = useRecoilValue(State.summonerData);
   return (
-    <Container src="http://opgg-static.akamaized.net/images/profile_icons/profileIcon4863.jpg?image=q_auto:best&v=1518361200" />
+    <Container
+      src={
+        summonerData.data.profileIconUrl
+          ? summonerData.data.profileIconUrl
+          : 'https://ddragon.leagueoflegends.com/cdn/11.3.1/img/profileicon/4863.png'
+      }
+    />
   );
 }
 

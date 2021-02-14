@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { useRecoilValue, useRecoilState } from 'recoil';
 
 import State from '@State';
+import Api from '@Utils/Api';
 
 const Container = styled.button`
   width: 25%;
@@ -24,13 +25,13 @@ const Container = styled.button`
 `;
 
 function Component() {
-  const [, setSummonerName] = useRecoilState(State.summonerName);
   const searchName = useRecoilValue(State.searchName);
+  const [, setSummonerData] = useRecoilState(State.summonerData);
 
   return (
     <Container
-      onClick={() => {
-        setSummonerName(searchName);
+      onClick={async () => {
+        setSummonerData(await Api.getProfile(searchName));
       }}
     >
       GO!

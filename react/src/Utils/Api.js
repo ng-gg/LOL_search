@@ -9,7 +9,7 @@ const api = {
       `/api/summoner/profile/${summonerName}`,
       config
     );
-    return response;
+    return response.data;
   },
 };
 
