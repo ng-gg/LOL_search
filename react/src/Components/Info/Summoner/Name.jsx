@@ -1,5 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useRecoilValue } from 'recoil';
+
+import state from '@State';
 
 const Container = styled.div`
   width: 100%;
@@ -11,7 +14,9 @@ const Container = styled.div`
 `;
 
 function Component() {
-  return <Container>소송왕잡스</Container>;
+  const summonerName = useRecoilValue(state.summonerName);
+
+  return <Container>{summonerName}</Container>;
 }
 
 export default Component;

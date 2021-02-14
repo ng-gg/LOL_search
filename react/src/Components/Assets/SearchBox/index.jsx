@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useRecoilState } from 'recoil';
 
 import Button from './Button';
+import State from '@State';
 
 const RowContainer = styled.div`
   width: 250px;
@@ -32,9 +34,26 @@ const Container = styled.input`
 `;
 
 function Component() {
+  const [searchName, setSearchName] = useRecoilState(State.searchName);
+  const [, setSummonerName] = useRecoilState(State.summonerName);
+
+  function onChange(event) {
+    setSearchName(event.target.value);
+  }
+
+  function onKeypress(event) {
+    if (event.key === 'Enter') {
+      setSummonerName(searchName);
+    }
+  }
+
   return (
     <RowContainer>
-      <Container placeholder="Search"></Container>
+      <Container
+        placeholder="Search"
+        onChange={onChange}
+        onKeyPress={onKeypress}
+      ></Container>
       <Button></Button>
     </RowContainer>
   );

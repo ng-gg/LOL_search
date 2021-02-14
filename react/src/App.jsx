@@ -1,5 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
+import {
+  RecoilRoot,
+  atom,
+  selector,
+  useRecoilState,
+  useRecoilValue,
+} from 'recoil';
 
 import Modal from '@Modal';
 
@@ -15,9 +22,11 @@ const Container = styled.div`
 
 function App() {
   return (
-    <Container>
-      <Modal />
-    </Container>
+    <RecoilRoot>
+      <Container>
+        <Modal />
+      </Container>
+    </RecoilRoot>
   );
 }
 

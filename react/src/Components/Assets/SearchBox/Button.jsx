@@ -1,5 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useRecoilValue, useRecoilState } from 'recoil';
+
+import State from '@State';
 
 const Container = styled.button`
   width: 25%;
@@ -21,7 +24,18 @@ const Container = styled.button`
 `;
 
 function Component() {
-  return <Container>GO!</Container>;
+  const [, setSummonerName] = useRecoilState(State.summonerName);
+  const searchName = useRecoilValue(State.searchName);
+
+  return (
+    <Container
+      onClick={() => {
+        setSummonerName(searchName);
+      }}
+    >
+      GO!
+    </Container>
+  );
 }
 
 export default Component;

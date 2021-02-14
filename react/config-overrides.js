@@ -12,6 +12,7 @@ module.exports = {
       ['@Logo']: path.resolve(__dirname, 'src/Components/Logo/'),
       ['@Info']: path.resolve(__dirname, 'src/Components/Info/'),
       ['@Assets']: path.resolve(__dirname, 'src/Components/Assets/'),
+      ['@State']: path.resolve(__dirname, 'src/Components/State/'),
     })
   ),
 };
