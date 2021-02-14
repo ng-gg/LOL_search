@@ -14,8 +14,8 @@ const Container = styled.div`
 function Component() {
   return (
     <Container>
-      <Match></Match>
-      <Match></Match>
+      <Match win={true}></Match>
+      <Match win={false}></Match>
       <Match></Match>
     </Container>
   );
