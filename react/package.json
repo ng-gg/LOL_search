@@ -37,6 +37,7 @@
     ]
   },
   "devDependencies": {
+    "axios": "^0.21.1",
     "customize-cra": "^1.0.0",
     "dotenv": "^8.2.0",
     "eslint": "^7.19.0",
